@@ -9,6 +9,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import canonicaliseName from '../../lib/utils';
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -43,10 +44,17 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     fontSize: 15,
+    marginBottom: 10,
   },
   bannerImage: {
     width: deviceWidth * 1,
     height: 300,
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
+    marginTop: 10,
   },
 });
 
@@ -60,6 +68,9 @@ const RecipeDetails = ({ route, navigation }) => {
     cookingTime,
     imageUrl,
   } = recipe;
+
+  const hours = cookingTime / 60;
+  const minutes = cookingTime - (cookingTime / 60) * 60;
 
   return (
     <ScrollView>
@@ -77,12 +88,16 @@ const RecipeDetails = ({ route, navigation }) => {
                 Servings: <span>{servings} portions</span>
               </Text>
               <Text style={styles.subTitle}>
-                Cooking Time:{' '}
+                Cooking Time:
                 <span>
                   {cookingTime < 60 ? (
-                    <Text>{cookingTime} minutes.</Text>
+                    <Text> {cookingTime} minutes</Text>
                   ) : (
-                    <Text>{Math.floor(cookingTime / 60)}</Text>
+                    <Text>
+                      {' '}
+                      {hours > 1 ? `${hours} hours` : `${hours} hour`}{' '}
+                      {minutes > 0 ? `, ${minutes} minutes.` : null}{' '}
+                    </Text>
                   )}
                 </span>
               </Text>
@@ -90,10 +105,36 @@ const RecipeDetails = ({ route, navigation }) => {
             <View style={styles.container}>
               <Text style={styles.subTitle}>Ingredients:</Text>
               {ingredients.map(ingredient => (
-                <Text>{ingredient.ingredient}</Text>
+                <table key={canonicaliseName(ingredient.ingredient)}>
+                  <tc>
+                    <Text style={styles.paragraph}>{ingredient.amount}</Text>
+                  </tc>
+                  <tc>
+                    <Text style={styles.paragraph}>
+                      {ingredient.ingredient}
+                    </Text>
+                  </tc>
+                </table>
               ))}
+              <Text style={styles.subTitle}>Cooking Method:</Text>
+              <View>
+                {method.map(step => (
+                  <Text
+                    key={canonicaliseName(step).slice(10)}
+                    style={styles.paragraph}
+                  >
+                    {step}
+                  </Text>
+                ))}
+              </View>
+              <View style={styles.button}>
+                <Button
+                  color="#00263e"
+                  title="< Back to List"
+                  onPress={() => navigation.goBack()}
+                />
+              </View>
             </View>
-            <Button title="Back to List" onPress={() => navigation.goBack()} />
           </View>
         )}
       </View>
@@ -116,8 +157,8 @@ RecipeDetails.propTypes = {
       }),
     }),
   }).isRequired,
-  method: PropTypes.string.isRequired,
-  ingredients: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  method: PropTypes.arrayOf(PropTypes.string).isRequired,
+  ingredients: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   servings: PropTypes.string.isRequired,
   cookingTime: PropTypes.number.isRequired,
   navigation: PropTypes.shape({

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, ScrollView, StyleSheet, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
-import canonicaliseRecipeName from '../../lib/utils';
+import canonicaliseName from '../../lib/utils';
 import RecipeTile from '../recipe-tile/RecipeTile';
 
 const deviceWidth = Dimensions.get('window').width;
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 60,
+    marginBottom: 20,
   },
 });
 
@@ -40,7 +41,7 @@ const RecipesScreen = ({ recipes, isLoading, error, navigation }) => {
           <View>
             {recipes ? (
               recipes.map(recipe => (
-                <View key={canonicaliseRecipeName(recipe.title)}>
+                <View key={canonicaliseName(recipe.title)}>
                   <RecipeTile
                     title={recipe.title}
                     imageUrl={recipe.imageUrl}
@@ -66,9 +67,9 @@ RecipesScreen.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       imageUrl: PropTypes.string.isRequired,
-      method: PropTypes.string.isRequired,
-      ingredients: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      servings: PropTypes.string.isRequired,
+      method: PropTypes.arrayOf(PropTypes.string).isRequired,
+      ingredients: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+      servings: PropTypes.number.isRequired,
       cookingTime: PropTypes.number.isRequired,
     }),
   ),
