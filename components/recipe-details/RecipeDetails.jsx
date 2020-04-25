@@ -82,7 +82,6 @@ const RecipeDetails = ({ route, navigation }) => {
   } = recipe;
 
   const hours = cookingTime / 60;
-  console.log('HOURS', hours);
   const minutes = cookingTime - (cookingTime / 60) * 60;
 
   return (
