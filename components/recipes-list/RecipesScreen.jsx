@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
     height: 30,
     backgroundColor: '#00263e',
     width: deviceWidth,
+    position: 'sticky',
+    bottom: 0,
   },
 });
 
