@@ -117,7 +117,7 @@ const RecipeDetails = ({ route, navigation }) => {
                         <Text>{hours} hours</Text>
                       )}
                       <Text>
-                        {minutes > 0 ? <Text> {minutes} minutes</Text> : null}{' '}
+                        {minutes > 0 ? <Text> {minutes} minutes</Text> : null}
                       </Text>
                     </Text>
                   )}
