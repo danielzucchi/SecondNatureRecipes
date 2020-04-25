@@ -19,7 +19,7 @@ const App = () => {
         <Stack.Navigator
           screenOptions={{
             headerBackTitle: 'Back',
-            headerTitle: <HeaderBarImage />,
+            headerTitle: () => <HeaderBarImage />,
             headerStyle: {
               backgroundColor: '#00263e',
             },
