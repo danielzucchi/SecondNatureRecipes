@@ -13,6 +13,7 @@ module.exports = {
   },
   parser: 'babel-eslint',
   rules: {
+    'global-require': 0,
     'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
     'max-len': [
       'warn',

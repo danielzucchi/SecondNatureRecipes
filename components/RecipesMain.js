@@ -1,19 +1,16 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import RecipesContainer from '../components/recipes-list/RecipesContainer';
+import RecipesContainer from './recipes-list/RecipesContainer';
 import fetchRecipes from '../lib/recipes/fetchRecipes';
 
-class RecipesMain extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
+const RecipesMain = ({ navigation, dispatch }) => {
+  useEffect(() => {
     dispatch(fetchRecipes());
-  }
+  }, []);
 
-  render() {
-    return <RecipesContainer />;
-  }
-}
+  return <RecipesContainer navigation={navigation} />;
+};
 
 RecipesMain.propTypes = {
   dispatch: PropTypes.func.isRequired,

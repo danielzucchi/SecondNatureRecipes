@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
-import RecipesList from './RecipesList';
+import RecipesScreen from './RecipesScreen';
 
-const mapStateToProps = ({ content }) => {
-  const { isLoading, recipes } = content;
+const mapStateToProps = ({ content }, ownProps) => {
+  const { isLoading, recipes, error } = content;
 
   return {
     recipes,
     isLoading,
+    error,
+    ...ownProps,
   };
 };
 
-export default connect(mapStateToProps)(RecipesList);
+export default connect(mapStateToProps)(RecipesScreen);
