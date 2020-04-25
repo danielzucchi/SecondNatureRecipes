@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     height: deviceHeight * 0.8,
   },
   footer: {
-    height: 30,
+    height: 40,
     backgroundColor: '#00263e',
     width: deviceWidth,
   },

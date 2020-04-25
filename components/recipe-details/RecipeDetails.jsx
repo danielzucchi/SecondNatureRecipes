@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
   footer: {
-    height: 30,
+    height: 40,
     backgroundColor: '#00263e',
     width: deviceWidth,
   },
