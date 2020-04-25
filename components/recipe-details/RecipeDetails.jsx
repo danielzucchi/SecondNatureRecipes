@@ -168,7 +168,7 @@ RecipeDetails.propTypes = {
       recipe: PropTypes.shape({
         title: PropTypes.string.isRequired,
         imageUrl: PropTypes.string.isRequired,
-        method: PropTypes.string.isRequired,
+        method: PropTypes.arrayOf(PropTypes.string).isRequired,
         ingredients: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         servings: PropTypes.string.isRequired,
         cookingTime: PropTypes.number.isRequired,
