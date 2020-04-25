@@ -42,7 +42,7 @@ const RecipeTile = ({ title, imageUrl, recipe, navigation }) => {
   return (
     <TouchableOpacity onPress={() => navigation.navigate('Recipe', { recipe })}>
       <View style={styles.container}>
-        <Image source={imageUrl} style={styles.image} />
+        <Image source={{ uri: imageUrl }} style={styles.image} />
         <View>
           <Text style={styles.title}>{title}</Text>
         </View>

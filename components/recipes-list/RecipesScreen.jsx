@@ -5,6 +5,7 @@ import canonicaliseName from '../../lib/utils';
 import RecipeTile from '../recipe-tile/RecipeTile';
 
 const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
@@ -24,6 +25,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 60,
   },
+  loading: {
+    fontSize: 30,
+    paddingTop: 170,
+    paddingBottom: 200,
+    height: deviceHeight * 0.8,
+  },
 });
 
 const RecipesScreen = ({ recipes, isLoading, error, navigation }) => {
@@ -34,7 +41,7 @@ const RecipesScreen = ({ recipes, isLoading, error, navigation }) => {
           <Text style={styles.title}>Recipes</Text>
         </View>
         {isLoading ? (
-          <Text>Loading...</Text>
+          <Text style={styles.loading}>Loading...</Text>
         ) : (
           <View>
             {recipes ? (
@@ -52,7 +59,7 @@ const RecipesScreen = ({ recipes, isLoading, error, navigation }) => {
               <Text>No recipes found.</Text>
             )}
 
-            {error && <h6>{error}</h6>}
+            {error && <Text>{error}</Text>}
           </View>
         )}
       </View>

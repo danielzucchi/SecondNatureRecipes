@@ -31,8 +31,6 @@ const styles = StyleSheet.create({
     paddingRight: 20,
   },
   title: {
-    marginTop: 50,
-    marginBottom: 50,
     fontSize: 40,
     textAlign: 'center',
   },
@@ -91,7 +89,9 @@ const RecipeDetails = ({ route, navigation }) => {
             <View style={styles.titleContainer}>
               <Text style={styles.title}>{title}</Text>
             </View>
-            <Image source={imageUrl} style={styles.bannerImage} />
+            {imageUrl && (
+              <Image source={{ uri: imageUrl }} style={styles.bannerImage} />
+            )}
             <View style={styles.titleContainer}>
               <Text style={styles.subTitle}>
                 Servings:{' '}
@@ -100,13 +100,12 @@ const RecipeDetails = ({ route, navigation }) => {
                 </Text>
               </Text>
               <Text style={styles.subTitle}>
-                Cooking Time:
+                Cooking Time:{' '}
                 <Text>
                   {cookingTime < 60 ? (
                     <Text> {cookingTime} minutes</Text>
                   ) : (
                     <View>
-                      {' '}
                       <Text>
                         {hours > 1 ? `${hours} hours` : `${hours} hour`}{' '}
                         <Text>
@@ -164,8 +163,6 @@ const RecipeDetails = ({ route, navigation }) => {
 };
 
 RecipeDetails.propTypes = {
-  title: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
   route: PropTypes.shape({
     params: PropTypes.shape({
       recipe: PropTypes.shape({
@@ -178,10 +175,6 @@ RecipeDetails.propTypes = {
       }),
     }),
   }).isRequired,
-  method: PropTypes.arrayOf(PropTypes.string).isRequired,
-  ingredients: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  servings: PropTypes.string.isRequired,
-  cookingTime: PropTypes.number.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
     goBack: PropTypes.func.isRequired,
