@@ -82,6 +82,7 @@ const RecipeDetails = ({ route, navigation }) => {
   } = recipe;
 
   const hours = cookingTime / 60;
+  console.log('HOURS', hours);
   const minutes = cookingTime - (cookingTime / 60) * 60;
 
   return (
@@ -110,16 +111,16 @@ const RecipeDetails = ({ route, navigation }) => {
                   {cookingTime < 60 ? (
                     <Text> {cookingTime} minutes</Text>
                   ) : (
-                    <View>
+                    <Text>
+                      {hours <= 1 ? (
+                        <Text>{hours} hour</Text>
+                      ) : (
+                        <Text>{hours} hours</Text>
+                      )}
                       <Text>
-                        {hours > 1 ? `${hours} hours` : `${hours} hour`}{' '}
-                        <Text>
-                          <Text>
-                            {minutes > 0 ? `, ${minutes} minutes.` : null}{' '}
-                          </Text>
-                        </Text>
+                        {minutes > 0 ? <Text> {minutes} minutes</Text> : null}{' '}
                       </Text>
-                    </View>
+                    </Text>
                   )}
                 </Text>
               </Text>
