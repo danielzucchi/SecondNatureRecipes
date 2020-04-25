@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Provider } from 'react-redux';
 import initStore from './lib/store';
 import RecipesMain from './components/RecipesMain';
-import RecipePage from './components/recipes-page/RecipePage';
+import RecipeDetails from './components/recipe-details/RecipeDetails';
 import HeaderBarImage from './components/header-bar-image/HeaderBarImage';
 
 const store = initStore();
@@ -32,7 +32,7 @@ const App = () => {
           }}
         >
           <Stack.Screen name="RecipesList" component={RecipesMain} />
-          <Stack.Screen name="Recipe" component={RecipePage} />
+          <Stack.Screen name="Recipe" component={RecipeDetails} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

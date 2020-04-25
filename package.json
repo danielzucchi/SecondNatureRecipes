@@ -11,7 +11,6 @@
     "@react-native-community/masked-view": "0.1.6",
     "@react-navigation/native": "^5.1.6",
     "@react-navigation/stack": "^5.2.13",
-    "@use-expo/font": "^2.0.0",
     "axios": "^0.19.2",
     "expo": "~37.0.3",
     "expo-font": "~8.1.0",

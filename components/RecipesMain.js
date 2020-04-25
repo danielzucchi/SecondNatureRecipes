@@ -14,6 +14,9 @@ const RecipesMain = ({ navigation, dispatch }) => {
 
 RecipesMain.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default connect(state => state)(RecipesMain);

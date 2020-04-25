@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 const deviceWidth = Dimensions.get('window').width;
 
@@ -16,23 +17,24 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: '#00b9ce',
     borderRadius: 20 / 2,
+    flexDirection: 'row',
   },
   image: {
+    flex: 2,
     borderRadius: 20 / 2,
-    width: 100,
-    height: 100,
+    width: 50,
+    height: 80,
     marginLeft: 10,
     marginRight: 10,
     marginTop: 10,
     marginBottom: 10,
   },
   title: {
-    flex: 1,
-    fontFamily: 'MabryPro-Bold',
+    width: 150,
     fontSize: 20,
-    justifyContent: 'flex-end',
-    alignSelf: 'flex-end',
-    flexDirection: 'row',
+    marginTop: 20,
+    marginRight: 15,
+    marginBottom: 10,
   },
 });
 
@@ -47,6 +49,15 @@ const RecipeTile = ({ title, imageUrl, recipe, navigation }) => {
       </View>
     </TouchableOpacity>
   );
+};
+
+RecipeTile.propTypes = {
+  title: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  recipe: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default RecipeTile;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, View, ScrollView, StyleSheet, Dimensions } from 'react-native';
-import { useFonts } from '@use-expo/font';
 import PropTypes from 'prop-types';
 import canonicaliseRecipeName from '../../lib/utils';
 import RecipeTile from '../recipe-tile/RecipeTile';
@@ -25,15 +24,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 60,
-    fontFamily: 'MabryPro-Black',
   },
 });
 
 const RecipesScreen = ({ recipes, isLoading, error, navigation }) => {
-  useFonts({
-    'MabryPro-Black': require('../../assets/fonts/MabryPro-Black.otf'),
-  });
-
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -68,12 +62,26 @@ const RecipesScreen = ({ recipes, isLoading, error, navigation }) => {
 };
 
 RecipesScreen.propTypes = {
-  recipes: PropTypes.arrayOf(PropTypes.shape({})),
+  recipes: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      imageUrl: PropTypes.string.isRequired,
+      method: PropTypes.string.isRequired,
+      ingredients: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+      servings: PropTypes.string.isRequired,
+      cookingTime: PropTypes.number.isRequired,
+    }),
+  ),
   isLoading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 RecipesScreen.defaultProps = {
   recipes: null,
+  error: null,
 };
 
 export default RecipesScreen;
