@@ -13,18 +13,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: 100,
   },
   titleContainer: {
     backgroundColor: '#ccf1f6',
     width: deviceWidth * 1,
-    height: 70,
+    height: 100,
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
     fontSize: 60,
-    marginBottom: 20,
   },
 });
 

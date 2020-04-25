@@ -56,6 +56,15 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 10,
   },
+  table: {
+    flex: 1,
+    alignSelf: 'stretch',
+    flexDirection: 'row',
+  },
+  tableColumn: {
+    flex: 1,
+    alignSelf: 'stretch',
+  },
 });
 
 const RecipeDetails = ({ route, navigation }) => {
@@ -85,36 +94,48 @@ const RecipeDetails = ({ route, navigation }) => {
             <Image source={imageUrl} style={styles.bannerImage} />
             <View style={styles.titleContainer}>
               <Text style={styles.subTitle}>
-                Servings: <span>{servings} portions</span>
+                Servings:{' '}
+                <Text>
+                  <Text>{servings} portions</Text>
+                </Text>
               </Text>
               <Text style={styles.subTitle}>
                 Cooking Time:
-                <span>
+                <Text>
                   {cookingTime < 60 ? (
                     <Text> {cookingTime} minutes</Text>
                   ) : (
-                    <Text>
+                    <View>
                       {' '}
-                      {hours > 1 ? `${hours} hours` : `${hours} hour`}{' '}
-                      {minutes > 0 ? `, ${minutes} minutes.` : null}{' '}
-                    </Text>
+                      <Text>
+                        {hours > 1 ? `${hours} hours` : `${hours} hour`}{' '}
+                        <Text>
+                          <Text>
+                            {minutes > 0 ? `, ${minutes} minutes.` : null}{' '}
+                          </Text>
+                        </Text>
+                      </Text>
+                    </View>
                   )}
-                </span>
+                </Text>
               </Text>
             </View>
             <View style={styles.container}>
               <Text style={styles.subTitle}>Ingredients:</Text>
               {ingredients.map(ingredient => (
-                <table key={canonicaliseName(ingredient.ingredient)}>
-                  <tc>
+                <View
+                  style={styles.table}
+                  key={canonicaliseName(ingredient.ingredient)}
+                >
+                  <View style={styles.tableColumn}>
                     <Text style={styles.paragraph}>{ingredient.amount}</Text>
-                  </tc>
-                  <tc>
+                  </View>
+                  <View style={styles.tableColumn}>
                     <Text style={styles.paragraph}>
                       {ingredient.ingredient}
                     </Text>
-                  </tc>
-                </table>
+                  </View>
+                </View>
               ))}
               <Text style={styles.subTitle}>Cooking Method:</Text>
               <View>
