@@ -14,7 +14,7 @@ module.exports = {
   parser: 'babel-eslint',
   rules: {
     'global-require': 0,
-    'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': ['warn', { extensions: ['.js'] }],
     'max-len': [
       'warn',
       {

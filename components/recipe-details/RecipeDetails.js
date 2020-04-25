@@ -105,7 +105,7 @@ const RecipeDetails = ({ route, navigation }) => {
                 </Text>
               </Text>
               <Text style={styles.subTitle}>
-                Cooking Time:{' '}
+                Cooking Time:
                 <Text>
                   {cookingTime < 60 ? (
                     <Text> {cookingTime} minutes</Text>
