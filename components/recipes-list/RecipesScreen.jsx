@@ -31,6 +31,11 @@ const styles = StyleSheet.create({
     paddingBottom: 200,
     height: deviceHeight * 0.8,
   },
+  footer: {
+    height: 30,
+    backgroundColor: '#00263e',
+    width: deviceWidth,
+  },
 });
 
 const RecipesScreen = ({ recipes, isLoading, error, navigation }) => {
@@ -62,6 +67,7 @@ const RecipesScreen = ({ recipes, isLoading, error, navigation }) => {
             {error && <Text>{error}</Text>}
           </View>
         )}
+        <View style={styles.footer} />
       </View>
     </ScrollView>
   );

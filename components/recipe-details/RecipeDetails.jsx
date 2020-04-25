@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   bannerImage: {
-    width: deviceWidth * 1,
+    width: deviceWidth,
     height: 300,
   },
   button: {
@@ -62,6 +62,11 @@ const styles = StyleSheet.create({
   tableColumn: {
     flex: 1,
     alignSelf: 'stretch',
+  },
+  footer: {
+    height: 30,
+    backgroundColor: '#00263e',
+    width: deviceWidth,
   },
 });
 
@@ -155,6 +160,7 @@ const RecipeDetails = ({ route, navigation }) => {
                 />
               </View>
             </View>
+            <View style={styles.footer} />
           </View>
         )}
       </View>
@@ -169,8 +175,9 @@ RecipeDetails.propTypes = {
         title: PropTypes.string.isRequired,
         imageUrl: PropTypes.string.isRequired,
         method: PropTypes.arrayOf(PropTypes.string).isRequired,
-        ingredients: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        servings: PropTypes.string.isRequired,
+        ingredients: PropTypes.arrayOf(PropTypes.shape({}).isRequired)
+          .isRequired,
+        servings: PropTypes.number.isRequired,
         cookingTime: PropTypes.number.isRequired,
       }),
     }),

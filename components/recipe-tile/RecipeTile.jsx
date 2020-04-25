@@ -14,7 +14,8 @@ const deviceWidth = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container: {
     width: deviceWidth * 0.8,
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom: 10,
     backgroundColor: '#00b9ce',
     borderRadius: 20 / 2,
     flexDirection: 'row',
