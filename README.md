@@ -6,7 +6,7 @@ React native app using recipes API from Second Nature.
 
 ### Information
 
-Make sure youa re running Node version 13, and Expo-CLI is installed.
+**Make sure you are running Node version 13, and Expo-CLI is installed.**
 
 ### App structure
 Built in React Native with Redux for state management, Axios for data fetching, `redux-thunk` for Redux store side-effects, data loaded from Second Nature recipes API.
